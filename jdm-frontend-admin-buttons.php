@@ -71,6 +71,8 @@ if(!function_exists('jdmfab_show_admin_buttons')) {
 	
 	function jdmfab_show_admin_buttons() {
 		if( current_user_can('edit_others_pages') ) { 
+			$adminurl = get_admin_url();
+			
 			$html  = '<div id="fab-admin-btns" class="jdm-fab">';
 			$html .= '	<div class="admin-btns-wrapper">';
 			
@@ -79,12 +81,13 @@ if(!function_exists('jdmfab_show_admin_buttons')) {
 			
 			if(is_page()) {
 			$html .= '		<a href="'. get_edit_post_link().'" class="btn btn-block btn-info"><span class="glyphicon glyphicon-edit"></span> Edit Page</a>';
-			} elseif(is_front_page()) {
+			} elseif(is_front_page() || is_home()) {
 			$html .= '		<a href="'. get_edit_post_link().'" class="btn btn-block btn-info"><span class="glyphicon glyphicon-edit"></span> Edit Home</a>';
 			} elseif(is_single()) {
 			$html .= '		<a href="'. get_edit_post_link().'" class="btn btn-block btn-info"><span class="glyphicon glyphicon-edit"></span> Edit Post</a>';
 			} elseif(is_category()) {
-			$html .= '		<a href="'. get_edit_post_link().'" class="btn btn-block btn-info"><span class="glyphicon glyphicon-edit"></span> Edit Category</a>';
+			$catid = get_query_var('cat');
+			$html .= '		<a href="'.$adminurl.'edit-tags.php?action=edit&taxonomy=category&tag_ID='.$catid.'&post_type=post" class="btn btn-block btn-info"><span class="glyphicon glyphicon-edit"></span> Edit Category</a>';
 			} else {
 			$html .= '		<a href="'. get_edit_post_link().'" class="btn btn-block btn-info"><span class="glyphicon glyphicon-edit"></span> Edit This</a>';
 			}
