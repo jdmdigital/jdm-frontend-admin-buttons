@@ -18,9 +18,14 @@ The plugin is still in BETA, but you're welcome to take a look at how it's comin
 ## Installation
 1. Install the plugin, and the updater - [tutorial here for using GitHub Updater](http://labs.jdmdigital.co/plugins/github-updates/)
 2. Activate the plugin
-3. Setup the plugin (TBD)
+3. That's it!
 
 ## Changelog
+
+**0.6**
+* First well-tested version
+* version Bump
+* GitHub release created
 
 **0.5**
 * Enabled GitHub Updater
