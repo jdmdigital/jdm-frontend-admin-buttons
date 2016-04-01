@@ -3,7 +3,7 @@
  * Plugin Name: JDM Frontend Admin Buttons
  * Plugin URI: https://github.com/jdmdigital/jdm-frontend-admin-buttons/
  * Description: JDM Frontend Admin Buttons is a lightweight WordPress plugin that hides the default Admin Bar and replaces it with out of the way, contextually-aware, floating buttons for basic admin tasks.
- * Version: 0.6
+ * Version: 0.7
  * Author: JDM Digital
  * Author URI: http://jdmdigital.co
  * License: GPLv2 or later
@@ -59,7 +59,7 @@ if(!function_exists('jdm_edit_with_vc')) {
 		$vcEditlink = $adminURL.'post.php?vc_action=vc_inline&amp;post_id='.$id.'&amp;post_type='.$type;
 		
 		if($vc) {
-			return '<a href="'.$vcEditlink.'" class="btn btn-block btn-primary"><span class="glyphicon glyphicon-fullscreen"></span> Visual Editor</a>';
+			return '<a href="'.$vcEditlink.'" class="btn btn-block btn-primary"><span class="glyphicon glyphicon-fullscreen genericon genericon-maximize"></span> Visual Editor</a>';
 		}
 		
 	}
@@ -70,34 +70,65 @@ if(!function_exists('jdmfab_show_admin_buttons')) {
 	add_action( 'wp_footer', 'jdmfab_show_admin_buttons', 5 );
 	
 	function jdmfab_show_admin_buttons() {
+		if(wp_style_is('bootstrap')) {
+			$fabclass = 'jdm-fab';	
+		} elseif(wp_style_is('bootstrap-css')) {
+			$fabclass = 'jdm-fab';
+		} elseif(wp_style_is('bootstrap-style')) {
+			$fabclass = 'jdm-fab';	
+		} else {
+			// Bootstrap CSS not enqueued
+			$fabclass = 'jdm-fab no-bs';
+		}
+		
+		if(wp_style_is('fontawesome')) {
+			$icon_prefix 	= 'fa';
+			$icon_edit 		= 'fa-pencil';
+			$icon_admin 	= 'fa-cog';
+			$icon_close 	= 'fa-eye-slash';
+			$icon_logout 	= 'fa-power-off';
+		} elseif (wp_style_is('genericons')) {
+			$icon_prefix 	= 'genericon';
+			$icon_edit 		= 'genericon-edit';
+			$icon_admin 	= 'genericon-cog';
+			$icon_close 	= 'genericon-close';
+			$icon_logout 	= 'genericon-unapprove';
+		} else {
+			$icon_prefix 	= 'glyphicon';
+			$icon_edit 		= 'glyphicon-edit';
+			$icon_admin 	= 'glyphicon-cog';
+			$icon_close 	= 'glyphicon-eye-close';
+			$icon_logout 	= 'glyphicon-log-out';
+		}
+		
 		if( current_user_can('edit_others_pages') ) { 
 			$adminurl = get_admin_url();
 			
-			$html  = '<div id="fab-admin-btns" class="jdm-fab">';
+			$html  = '<div id="fab-admin-btns" class="'.$fabclass.'">';
 			$html .= '	<div class="admin-btns-wrapper">';
 			
 			// Several If/else statements here to make sure these look good.
-			$html .= '		<button id="hide-admin-buttons" type="button" class="btn btn-block btn-default"><span class="glyphicon glyphicon-eye-close"></span> Hide Btns</button>';
+			$html .= '		<button id="hide-admin-buttons" type="button" class="btn btn-block btn-default"><span class="'.$icon_prefix.' '.$icon_close.'"></span> Hide Btns</button>';
 			
 			if(is_page()) {
-			$html .= '		<a href="'. get_edit_post_link().'" class="btn btn-block btn-info"><span class="glyphicon glyphicon-edit"></span> Edit Page</a>';
+			$html .= '		<a href="'. get_edit_post_link().'" class="btn btn-block btn-info"><span class="'.$icon_prefix.' '.$icon_edit.'"></span> Edit Page</a>';
 			} elseif(is_front_page() || is_home()) {
-			$html .= '		<a href="'. get_edit_post_link().'" class="btn btn-block btn-info"><span class="glyphicon glyphicon-edit"></span> Edit Home</a>';
+			$html .= '		<a href="'. get_edit_post_link().'" class="btn btn-block btn-info"><span class="'.$icon_prefix.' '.$icon_edit.'"></span> Edit Home</a>';
 			} elseif(is_single()) {
-			$html .= '		<a href="'. get_edit_post_link().'" class="btn btn-block btn-info"><span class="glyphicon glyphicon-edit"></span> Edit Post</a>';
+			$html .= '		<a href="'. get_edit_post_link().'" class="btn btn-block btn-info"><span class="'.$icon_prefix.' '.$icon_edit.'"></span> Edit Post</a>';
 			} elseif(is_category()) {
 			$catid = get_query_var('cat');
-			$html .= '		<a href="'.$adminurl.'edit-tags.php?action=edit&taxonomy=category&tag_ID='.$catid.'&post_type=post" class="btn btn-block btn-info"><span class="glyphicon glyphicon-edit"></span> Edit Category</a>';
+			$html .= '		<a href="'.$adminurl.'edit-tags.php?action=edit&taxonomy=category&tag_ID='.$catid.'&post_type=post" class="btn btn-block btn-info"><span class="'.$icon_prefix.' '.$icon_edit.'"></span> Edit Category</a>';
 			} else {
-			$html .= '		<a href="'. get_edit_post_link().'" class="btn btn-block btn-info"><span class="glyphicon glyphicon-edit"></span> Edit This</a>';
+			$html .= '		<a href="'. get_edit_post_link().'" class="btn btn-block btn-info"><span class="'.$icon_prefix.' '.$icon_edit.'"></span> Edit This</a>';
 			}
 			
 			if(is_plugin_active('js_composer/js_composer.php')) {
 			$html .= '		'.jdm_edit_with_vc();
 			}
 			
-			$html .= '		<a href="'. network_admin_url().'" class="btn btn-block btn-primary"><span class="glyphicon glyphicon-cog"></span> WP Admin</a>';
-			$html .= '		<a href="'. wp_logout_url( get_permalink() ).'" class="btn btn-block btn-danger"><span class="glyphicon glyphicon-log-out"></span> Logout</a>';
+			$html .= '		<a href="'. network_admin_url().'" class="btn btn-block btn-primary"><span class="'.$icon_prefix.' '.$icon_admin.'"></span> WP Admin</a>';
+			$html .= '		<a href="'. wp_logout_url( get_permalink() ).'" class="btn btn-block btn-danger"><span class="'.$icon_prefix.' '.$icon_logout.'"></span> Logout</a>';
 			
 			$html .= '	</div>';
 			$html .= '</div>';
