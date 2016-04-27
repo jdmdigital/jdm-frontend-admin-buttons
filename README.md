@@ -22,6 +22,25 @@ The plugin is still in BETA, but you're welcome to take a look at how it's comin
 
 ## Changelog
 
+**1.0**
+* Production-Ready
+* Several Bug Fixes
+* Better Touch-enabled Device Support
+* Version Bump
+
+**0.9**
+* Updated CSS, JS
+
+**0.8**
+* new customizer link added
+* version Bump
+
+**0.7**
+* Test if Bootstrap enqueued
+* jdm-fab.css file updated
+* add support for genericons and fontawesome
+* Version Bump
+
 **0.6**
 * First well-tested version
 * version Bump

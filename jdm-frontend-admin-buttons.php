@@ -1,9 +1,9 @@
 <?php 
 /**
  * Plugin Name: JDM Frontend Admin Buttons
- * Plugin URI: https://github.com/jdmdigital/jdm-frontend-admin-buttons/
+ * Plugin URI: http://labs.jdmdigital.co/code/frontend-admin-buttons/
  * Description: JDM Frontend Admin Buttons is a lightweight WordPress plugin that hides the default Admin Bar and replaces it with out of the way, contextually-aware, floating buttons for basic admin tasks.
- * Version: 0.9
+ * Version: 1.0
  * Author: JDM Digital
  * Author URI: http://jdmdigital.co
  * License: GPLv2 or later
@@ -59,7 +59,7 @@ if(!function_exists('jdm_edit_with_vc')) {
 		$vcEditlink = $adminURL.'post.php?vc_action=vc_inline&amp;post_id='.$id.'&amp;post_type='.$type;
 		
 		if($vc) {
-			return '<a href="'.$vcEditlink.'" class="btn btn-block btn-warning"><span class="glyphicon glyphicon-fullscreen genericon genericon-maximize"></span> Visual Editor</a>';
+			return '<a id="fab-vcedit" href="'.$vcEditlink.'" class="btn btn-block btn-warning"><span class="glyphicon glyphicon-fullscreen genericon genericon-maximize"></span> Visual Editor</a>';
 		}
 		
 	}
@@ -110,35 +110,35 @@ if(!function_exists('jdmfab_show_admin_buttons')) {
 		if( current_user_can('edit_others_pages') ) { 
 			$adminurl = get_admin_url();
 			
-			$html  = '<div id="fab-admin-btns" class="'.$fabclass.'">';
+			$html  = '<div id="fab-admin-btns" class="not-ready '.$fabclass.'">';
 			$html .= '	<div class="admin-btns-wrapper">';
 			
 			// Several If/else statements here to make sure these look good.
 			$html .= '		<button id="hide-admin-buttons" type="button" class="btn btn-block btn-default"><span class="'.$icon_prefix.' '.$icon_close.'"></span> Hide Btns</button>';
 			
 			if(is_page()) {
-			$html .= '		<a href="'. get_edit_post_link().'" class="btn btn-block btn-info"><span class="'.$icon_prefix.' '.$icon_edit.'"></span> Edit Page</a>';
+			$html .= '		<a id="fab-page" href="'. get_edit_post_link().'" class="btn btn-block btn-info"><span class="'.$icon_prefix.' '.$icon_edit.'"></span> Edit Page</a>';
 			} elseif(is_front_page() || is_home()) {
-			$html .= '		<a href="'. get_edit_post_link().'" class="btn btn-block btn-info"><span class="'.$icon_prefix.' '.$icon_edit.'"></span> Edit Home</a>';
+			$html .= '		<a id="fab-home" href="'. get_edit_post_link().'" class="btn btn-block btn-info"><span class="'.$icon_prefix.' '.$icon_edit.'"></span> Edit Home</a>';
 			} elseif(is_single()) {
-			$html .= '		<a href="'. get_edit_post_link().'" class="btn btn-block btn-info"><span class="'.$icon_prefix.' '.$icon_edit.'"></span> Edit Post</a>';
+			$html .= '		<a id="fab-post" href="'. get_edit_post_link().'" class="btn btn-block btn-info"><span class="'.$icon_prefix.' '.$icon_edit.'"></span> Edit Post</a>';
 			} elseif(is_category()) {
 			$catid = get_query_var('cat');
-			$html .= '		<a href="'.$adminurl.'edit-tags.php?action=edit&taxonomy=category&tag_ID='.$catid.'&post_type=post" class="btn btn-block btn-info"><span class="'.$icon_prefix.' '.$icon_edit.'"></span> Edit Category</a>';
+			$html .= '		<a id="fab-cat" href="'.$adminurl.'edit-tags.php?action=edit&taxonomy=category&tag_ID='.$catid.'&post_type=post" class="btn btn-block btn-info"><span class="'.$icon_prefix.' '.$icon_edit.'"></span> Edit Category</a>';
 			} else {
-			$html .= '		<a href="'. get_edit_post_link().'" class="btn btn-block btn-info"><span class="'.$icon_prefix.' '.$icon_edit.'"></span> Edit This</a>';
+			$html .= '		<a id="fab-else" href="'. get_edit_post_link().'" class="btn btn-block btn-info"><span class="'.$icon_prefix.' '.$icon_edit.'"></span> Edit This</a>';
 			}
 			
 			if(is_plugin_active('js_composer/js_composer.php')) {
 			$html .= '		'.jdm_edit_with_vc();
 			} else {
 				if ( current_user_can( 'customize' ) ) {
-					$html .= '		<a href="'. get_admin_url().'customize.php?return='.get_permalink().'" class="btn btn-block btn-warning"><span class="'.$icon_prefix.' '.$icon_customize.'"></span> Customize</a>';
+					$html .= '		<a id="fab-customize" href="'. get_admin_url().'customize.php?return='.get_permalink().'" class="btn btn-block btn-warning"><span class="'.$icon_prefix.' '.$icon_customize.'"></span> Customize</a>';
 				}
 			}
 			
-			$html .= '		<a href="'. network_admin_url().'" class="btn btn-block btn-primary"><span class="'.$icon_prefix.' '.$icon_admin.'"></span> WP Admin</a>';
-			$html .= '		<a href="'. wp_logout_url( get_permalink() ).'" class="btn btn-block btn-danger"><span class="'.$icon_prefix.' '.$icon_logout.'"></span> Logout</a>';
+			$html .= '		<a id="fab-wpadmin" href="'. network_admin_url().'" class="btn btn-block btn-primary"><span class="'.$icon_prefix.' '.$icon_admin.'"></span> WP Admin</a>';
+			$html .= '		<a id="fab-logout" href="'. wp_logout_url( get_permalink() ).'" class="btn btn-block btn-danger"><span class="'.$icon_prefix.' '.$icon_logout.'"></span> Logout</a>';
 			
 			$html .= '	</div>';
 			$html .= '</div>';
@@ -147,5 +147,4 @@ if(!function_exists('jdmfab_show_admin_buttons')) {
 		}
 	}
 }
-
 
