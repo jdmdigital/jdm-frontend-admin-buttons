@@ -1,5 +1,5 @@
 /* JDM FAB Styles */
-
+.no-js #hide-admin-buttons{display:none;}
 /* in case no Bootstrap - since v0.7 */
 .no-bs .btn{ opacity:0.8;	-moz-user-select: none;    -webkit-user-select:none;	-ms-user-select: none;	background-image: none;    border-radius: 4px;    cursor: pointer;    font-size: 16px; line-height:22px;  font-weight: normal;    padding: 6px 12px;    vertical-align: middle;    white-space: nowrap;	text-transform:none;	letter-spacing:normal;}
 .no-bs a.btn:hover{opacity:1;}
