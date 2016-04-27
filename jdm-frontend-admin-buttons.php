@@ -110,7 +110,7 @@ if(!function_exists('jdmfab_show_admin_buttons')) {
 		if( current_user_can('edit_others_pages') ) { 
 			$adminurl = get_admin_url();
 			
-			$html  = '<div id="fab-admin-btns" class="'.$fabclass.'">';
+			$html  = '<div id="fab-admin-btns" class="not-ready '.$fabclass.'">';
 			$html .= '	<div class="admin-btns-wrapper">';
 			
 			// Several If/else statements here to make sure these look good.
