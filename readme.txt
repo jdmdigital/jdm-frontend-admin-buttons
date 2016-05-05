@@ -41,6 +41,9 @@ http://labs.jdmdigital.co/wp-content/uploads/sites/4/2015/12/jdm-fab.jpg
 
 == Upgrade Notice ==
 
+= 1.1 =
+* Renamed the yoast_hide_admin_bar_settings function
+
 = 1.0 =
 * Updated CSS, JS
 * Several Bug Fixes
@@ -64,6 +67,10 @@ http://labs.jdmdigital.co/wp-content/uploads/sites/4/2015/12/jdm-fab.jpg
 * This version comes with GitHub automatic updates enabled.
 
 == Changelog ==
+
+= 1.1 =
+* Updated CSS
+* Renamed the yoast_hide_admin_bar_settings function
 
 = 1.0 =
 * Updated CSS, JS
