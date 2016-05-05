@@ -4,7 +4,7 @@ Donate link: http://jdmdigital.co
 Tags: administration, admin, frontend, buttons.
 Requires at least: 3.0.1
 Tested up to: 4.5.2
-Stable tag: 0.9
+Stable tag: 1.2
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -13,7 +13,7 @@ JDM Frontend Admin Buttons is a lightweight WordPress plugin that hides the defa
 == Description ==
 The WordPress admin bar gets in the way of basic frontend management of your WordPress site&mdash;esspecially if you have a fixed main navigation.  This simple and VERY light-weight plugin offers floating buttons that are contextually-aware and fixed to one side so they're out of the way.
 
-Learn more on the plugin site: http://labs.jdmdigital.co/code/frontend-admin-buttons/ and view the project on GitHub: https://github.com/jdmdigital/jdm-frontend-admin-buttons
+Learn more on the plugin site: http://jdmdig.it/jdm-fab and view the project on GitHub: https://github.com/jdmdigital/jdm-frontend-admin-buttons
 
 = Vision = 
 A few goals we had in making this plugin:
@@ -25,9 +25,13 @@ A few goals we had in making this plugin:
 
 
 == Installation ==
+This plugin is not, yet, avaliable on the WordPress repo.  To install it, you'll need to use the [GitHub Updater](https://github.com/afragen/github-updater) plugin for automatic updates.  Of course, you could just install/upgrade it manually using FTP, but that's boring.
+
 1. Install the plugin, and the updater - [tutorial here for using GitHub Updater](http://labs.jdmdigital.co/plugins/github-updates/)
 1. Activate the plugin
-1. That's it!
+1. That's it!  Seriously. 
+
+There's no settings page.  It does all the feature and role detection work for you.
 
 == Frequently Asked Questions ==
 
@@ -67,6 +71,10 @@ http://labs.jdmdigital.co/wp-content/uploads/sites/4/2015/12/jdm-fab.jpg
 * This version comes with GitHub automatic updates enabled.
 
 == Changelog ==
+
+= 1.2 =
+* Add better support for different access roles
+* Add tiny font-icon suite if none already found
 
 = 1.1 =
 * Updated CSS
