@@ -36,11 +36,11 @@ if(!function_exists('jdm_fab_hide_admin_bar_settings')) {
 <?php
 	}
 }
-function yoast_disable_admin_bar() {
+function jdm_fab_disable_admin_bar() {
     add_filter( 'show_admin_bar', '__return_false' );
     add_action( 'admin_print_scripts-profile.php', 'jdm_fab_hide_admin_bar_settings' );
 }
-add_action( 'init', 'yoast_disable_admin_bar' , 9 );
+add_action( 'init', 'jdm_fab_disable_admin_bar' , 9 );
 
 include_once( ABSPATH . 'wp-admin/includes/plugin.php' );
 
