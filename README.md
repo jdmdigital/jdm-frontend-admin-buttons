@@ -9,22 +9,25 @@ The WordPress admin bar gets in the way of basic frontend management of your Wor
 A few goals we had in making this plugin:
 
 *	Keep it free and feature-rich
-*	Keep it simple (stupid)
+*	Keep it simple
 *	Must be SUPER lightweight (we hate plugin bloat)
 *	Build for developers and noobs alike
 
-The plugin is still in BETA, but you're welcome to take a look at how it's coming over on <a href="http://labs.jdmdigital.co/plugins/frontend-admin-buttons/" target="_blank">JDM Labs</a>.
-
 ## Installation
+This plugin is not, yet, avaliable on the WordPress repo.  To install it, you'll need to use the [GitHub Updater](https://github.com/afragen/github-updater) plugin for automatic updates.  Of course, you could just install/upgrade it manually using FTP, but that's boring.
+
 1. Install the plugin, and the updater - [tutorial here for using GitHub Updater](http://labs.jdmdigital.co/plugins/github-updates/)
 2. Activate the plugin
-3. That's it!
+3. That's it!  Seriously. 
+
+There's no settings page.  It does all the feature and role detection work for you.
 
 ## Changelog
 
 **1.2**
 * Add better support for different access roles
 * Add tiny font-icon suite if none already found
+* Update README
 
 **1.1**
 * Fix possible function conflicts
