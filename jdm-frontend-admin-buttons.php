@@ -15,9 +15,10 @@
 if(!function_exists('jdmfab_enqueued_assets')) {
 	add_action( 'wp_enqueue_scripts', 'jdmfab_enqueued_assets' );
 	function jdmfab_enqueued_assets() {
-		if(is_user_logged_in() && current_user_can('edit_pages') ) {
-			wp_enqueue_style(  'jdm-fab', plugin_dir_url( __FILE__ ) . 'css/jdm-fab.css' );
-			wp_enqueue_script( 'jdm-fab', plugin_dir_url( __FILE__ ) . 'js/jdm-fab.js', array( 'jquery' ), '', true );
+		// changed in Fix #10 - if(is_user_logged_in() && current_user_can('edit_pages') ) {
+		if(is_user_logged_in()) {
+			wp_enqueue_style(  'jdm-fab', plugin_dir_url( __FILE__ ) . 'css/jdm-fab.css', array(), null, 'screen' );
+			wp_enqueue_script( 'jdm-fab', plugin_dir_url( __FILE__ ) . 'js/jdm-fab.js', array( 'jquery' ), null, true );
 		}
 	}
 }
@@ -48,7 +49,7 @@ include_once( ABSPATH . 'wp-admin/includes/plugin.php' );
 
 // If Visual Composer Plugin is active, return the edit front-page link.
 if(!function_exists('jdm_edit_with_vc')) {
-	function jdm_edit_with_vc(){
+	function jdm_edit_with_vc($icon_prefix = 'glyphicon'){
 		global $page, $post;
 		$id = $post->ID;
 		$adminURL = admin_url();
@@ -63,7 +64,7 @@ if(!function_exists('jdm_edit_with_vc')) {
 		$vcEditlink = $adminURL.'post.php?vc_action=vc_inline&amp;post_id='.$id.'&amp;post_type='.$type;
 		
 		if($vc) {
-			return '<a id="fab-vcedit" href="'.$vcEditlink.'" class="btn btn-block btn-warning"><span class="glyphicon glyphicon-fullscreen genericon genericon-maximize"></span> Visual Editor</a>';
+			return '<a id="fab-vcedit" href="'.$vcEditlink.'" class="btn btn-block btn-warning"><span class="glyphicon glyphicon-fullscreen genericon genericon-maximize fab-icon fab-brush"></span> Visual Editor</a>';
 		}
 		
 	}
@@ -74,17 +75,15 @@ if(!function_exists('jdmfab_show_admin_buttons')) {
 	add_action( 'wp_footer', 'jdmfab_show_admin_buttons', 5 );
 	
 	function jdmfab_show_admin_buttons() {
+		$bootstrapclass = true;
 		if(wp_style_is('bootstrap')) {
 			$fabclass = 'jdm-fab bs';
-			$bootstrapclass = true;	
 		} elseif(wp_style_is('bootstrap-css')) {
 			$fabclass = 'jdm-fab bs';
-			$bootstrapclass = true;	
 		} elseif(wp_style_is('bootstrap-style')) {
 			$fabclass = 'jdm-fab bs';	
-			$bootstrapclass = true;	
 		} else {
-			// Bootstrap CSS not enqueued
+			// Bootstrap CSS not enqueued (we don't think)
 			$fabclass = 'jdm-fab no-bs';
 			$bootstrapclass = false;	
 		}
@@ -94,6 +93,7 @@ if(!function_exists('jdmfab_show_admin_buttons')) {
 			$icon_edit 		= 'fa-pencil';
 			$icon_customize	= 'fa-paint-brush';
 			$icon_admin 	= 'fa-cog';
+			$icon_profile 	= 'fa-user';
 			$icon_close 	= 'fa-eye-slash';
 			$icon_logout 	= 'fa-power-off';
 			$fabclass 		.= ' fontawesome';
@@ -103,6 +103,7 @@ if(!function_exists('jdmfab_show_admin_buttons')) {
 			$icon_edit 		= 'genericon-edit';
 			$icon_customize	= 'genericon-maximize';
 			$icon_admin 	= 'genericon-cog';
+			$icon_profile 	= 'genericon-user';
 			$icon_close 	= 'genericon-close';
 			$icon_logout 	= 'genericon-unapprove';
 		} elseif($bootstrapclass) {
@@ -111,25 +112,26 @@ if(!function_exists('jdmfab_show_admin_buttons')) {
 			$icon_edit 		= 'glyphicon-edit';
 			$icon_customize	= 'glyphicon-fullscreen bp-link';
 			$icon_admin 	= 'glyphicon-cog';
+			$icon_profile 	= 'glyphicon-user';
 			$icon_close 	= 'glyphicon-eye-close';
 			$icon_logout 	= 'glyphicon-log-out';
 		} else {
-			$fabclass 		.= ' glyphicons';
-			$icon_prefix 	= 'glyphicon';
-			$icon_edit 		= 'glyphicon-edit';
-			$icon_customize	= 'glyphicon-fullscreen bp-link';
-			$icon_admin 	= 'glyphicon-cog';
-			$icon_close 	= 'glyphicon-eye-close';
-			$icon_logout 	= 'glyphicon-log-out';
+			$fabclass 		.= ' fab-icons';
+			$icon_prefix 	= 'fab-icon';
+			$icon_edit 		= 'fab-pencil-neg';
+			$icon_customize	= 'fab-equalizer';
+			$icon_admin 	= 'fab-cog';
+			$icon_profile 	= 'fab-user';
+			$icon_close 	= 'fab-eye';
+			$icon_logout 	= 'fab-cw';
 		}
 		
 		if( current_user_can('edit_others_pages') ) { 
 			$adminurl = get_admin_url();
-			
+			// Admin/Super-Admin Roles
 			$html  = '<div id="fab-admin-btns" class="not-ready '.$fabclass.'">';
 			$html .= '	<div class="admin-btns-wrapper">';
 			
-			// Several If/else statements here to make sure these look good.
 			$html .= '		<button id="hide-admin-buttons" type="button" class="btn btn-block btn-default"><span class="'.$icon_prefix.' '.$icon_close.'"></span> Hide Btns</button>';
 			
 			if(is_page()) {
@@ -163,11 +165,9 @@ if(!function_exists('jdmfab_show_admin_buttons')) {
 		
 		} elseif (current_user_can('edit_posts')) {
 			// "Author" Role
-			
 			$html  = '<div id="fab-admin-btns" class="not-ready '.$fabclass.'">';
 			$html .= '	<div class="admin-btns-wrapper">';
 			
-			// Several If/else statements here to make sure these look good.
 			$html .= '		<button id="hide-admin-buttons" type="button" class="btn btn-block btn-default"><span class="'.$icon_prefix.' '.$icon_close.'"></span> Hide Btns</button>';
 			
 			if(is_single()) {
@@ -184,7 +184,7 @@ if(!function_exists('jdmfab_show_admin_buttons')) {
 				}
 			}
 			
-			$html .= '		<a id="fab-wpadmin" href="'. get_edit_user_link().'" class="btn btn-block btn-primary"><span class="'.$icon_prefix.' '.$icon_admin.'"></span> Edit Profile</a>';
+			$html .= '		<a id="fab-wpadmin" href="'. get_edit_user_link().'" class="btn btn-block btn-primary"><span class="'.$icon_prefix.' '.$icon_profile.'"></span> Edit Profile</a>';
 			$html .= '		<a id="fab-logout" href="'. wp_logout_url( get_permalink() ).'" class="btn btn-block btn-danger"><span class="'.$icon_prefix.' '.$icon_logout.'"></span> Logout</a>';
 			
 			$html .= '	</div>';
@@ -199,7 +199,7 @@ if(!function_exists('jdmfab_show_admin_buttons')) {
 			
 			$html .= '		<button id="hide-admin-buttons" type="button" class="btn btn-block btn-default"><span class="'.$icon_prefix.' '.$icon_close.'"></span> Hide Btns</button>';
 			
-			$html .= '		<a id="fab-wpadmin" href="'. get_edit_user_link().'" class="btn btn-block btn-primary"><span class="'.$icon_prefix.' '.$icon_admin.'"></span> Edit Profile</a>';
+			$html .= '		<a id="fab-wpadmin" href="'. get_edit_user_link().'" class="btn btn-block btn-primary"><span class="'.$icon_prefix.' '.$icon_profile.'"></span> Edit Profile</a>';
 			$html .= '		<a id="fab-logout" href="'. wp_logout_url( get_permalink() ).'" class="btn btn-block btn-danger"><span class="'.$icon_prefix.' '.$icon_logout.'"></span> Logout</a>';
 			
 			$html .= '	</div>';
@@ -210,4 +210,3 @@ if(!function_exists('jdmfab_show_admin_buttons')) {
 		
 	}
 }
-

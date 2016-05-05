@@ -1,12 +1,61 @@
 /* JDM FAB Styles */
 .no-js #hide-admin-buttons{display:none;}
 
+/* @since v1.2 */
+@font-face {
+  font-family: 'fab-icons';
+  src: url('../font/fab-icons.eot?66843222');
+  src: url('../font/fab-icons.eot?66843222#iefix') format('embedded-opentype'),
+       url('../font/fab-icons.woff2?66843222') format('woff2'),
+       url('../font/fab-icons.woff?66843222') format('woff'),
+       url('../font/fab-icons.ttf?66843222') format('truetype'),
+       url('../font/fab-icons.svg?66843222#fab-icons') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+.fab-icon:before {
+  font-family: "fab-icons";
+  font-style: normal;
+  font-weight: normal;
+  speak: none;
+  display: inline-block;
+  text-decoration: inherit;
+  width: 1em;
+  margin-right: .2em;
+  margin-left:0;
+  text-align: center;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1em;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+.fab-pencil-neg:before { content: '\e800'; } 
+.fab-resize-full:before { content: '\e801'; } 
+.fab-cog:before { content: '\e802'; } 
+.fab-equalizer:before { content: '\e803'; } 
+.fab-block:before { content: '\e804'; } 
+.fab-brush:before { content: '\e805'; } 
+.fab-user:before { content: '\e806'; } 
+.fab-eye:before { content: '\e807'; } 
+.fab-cw:before { content: '\e808'; } 
+/* IE7 hack @since v1.2 - Assumes Modernizr is loaded and that test is run */
+.ie8compat .fab-pencil-neg { *zoom: expression( this.runtimeStyle['zoom'] = '1', this.innerHTML = '&#xe800;&nbsp;'); }
+.ie8compat .fab-resize-full { *zoom: expression( this.runtimeStyle['zoom'] = '1', this.innerHTML = '&#xe801;&nbsp;'); }
+.ie8compat .fab-cog { *zoom: expression( this.runtimeStyle['zoom'] = '1', this.innerHTML = '&#xe802;&nbsp;'); }
+.ie8compat .fab-equalizer { *zoom: expression( this.runtimeStyle['zoom'] = '1', this.innerHTML = '&#xe803;&nbsp;'); }
+.ie8compat .fab-block { *zoom: expression( this.runtimeStyle['zoom'] = '1', this.innerHTML = '&#xe804;&nbsp;'); }
+.ie8compat .fab-brush { *zoom: expression( this.runtimeStyle['zoom'] = '1', this.innerHTML = '&#xe805;&nbsp;'); }
+.ie8compat .fab-user { *zoom: expression( this.runtimeStyle['zoom'] = '1', this.innerHTML = '&#xe806;&nbsp;'); }
+.ie8compat .fab-eye { *zoom: expression( this.runtimeStyle['zoom'] = '1', this.innerHTML = '&#xe807;&nbsp;'); }
+.ie8compat .fab-cw { *zoom: expression( this.runtimeStyle['zoom'] = '1', this.innerHTML = '&#xe808;&nbsp;'); }
+
 /* in case of no Bootstrap - since v0.7 */
-.no-bs .btn{ opacity:0.8;	-moz-user-select: none;    -webkit-user-select:none;	-ms-user-select: none;	background-image: none;    border-radius: 4px;    cursor: pointer;    font-size: 16px; line-height:22px;  font-weight: normal;    padding: 6px 12px;    vertical-align: middle;    white-space: nowrap;	text-transform:none;	letter-spacing:normal;}
+.no-bs .btn{ margin-left:0;  opacity:0.8;	-moz-user-select: none;    -webkit-user-select:none;	-ms-user-select: none;	background-image: none;    border-radius: 4px;    cursor: pointer;    font-size: 16px; line-height:22px;  font-weight: normal;    padding: 6px 12px;    vertical-align: middle;    white-space: nowrap;	text-transform:none;	letter-spacing:normal;}
 .no-bs a.btn:hover{opacity:1;}
 .no-bs .btn .genericon{font-size:22px; line-height:22px; vertical-align:middle;}
 .no-bs .btn-block {    display: block;    width: 100%;}
-.no-bs .btn-default {    background-color: #f6f6f6;    border-color: #999;    color: #333;}
+.no-bs .btn-default {    background-color: #f6f6f6;    border-color: #ccc;    color: #444;}
 .no-bs .btn-info {    background-color: #5bc0de;    border-color: #46b8da;    color: #fff;}
 .no-bs .btn-primary {    background-color: #007acc;    border-color: #0171bc;    color: #fff;}
 .no-bs .btn-danger {    background-color: #d9534f;    border-color: #d43f3a;    color: #fff;}
@@ -24,12 +73,14 @@
 .jdm-fab{-webkit-transition: all 300ms ease; -moz-transition: all 300ms ease;-ms-transition: all 300ms ease;-o-transition: all 300ms ease;transition: all 300ms ease;}
 .admin-btns-wrapper .btn{font-family:"Open Sans",sans-serif; margin-bottom:2px; margin-right:0; text-align:left; line-height:2; border-top-right-radius:0; border-bottom-right-radius:0;}
 .admin-btns-wrapper .btn span{margin-right:15px; margin-left:5px;}
+.jdm-fab .genericon{height:1em; width:1em;}
 
 .jdm-fab, .jdm-fab:hover, .jdm-fab:focus, .jdm-fab:active{-moz-transform: translateX(115px);-webkit-transform: translateX(115px);-o-transform: translateX(115px);-ms-transform: translateX(115px);transform: translateX(115px);}
 .jdm-fab.fontawesome {-moz-transform: translateX(125px);-webkit-transform: translateX(125px);-o-transform: translateX(115px);-ms-transform: translateX(125px);transform: translateX(125px);}
-.jdm-fab.genericons {-moz-transform: translateX(105px);-webkit-transform: translateX(105px);-o-transform: translateX(105px);-ms-transform: translateX(105px);transform: translateX(105px);}
+.jdm-fab.genericons {-moz-transform: translateX(115px);-webkit-transform: translateX(115px);-o-transform: translateX(115px);-ms-transform: translateX(115px);transform: translateX(115px);}
+.jdm-fab.fab-icons {-moz-transform: translateX(120px);-webkit-transform: translateX(120px);-o-transform: translateX(120px);-ms-transform: translateX(120px);transform: translateX(120px);}
 
-.jdm-fab.genericons.has-hover, .jdm-fab.fontawesome.has-hover, .jdm-fab.has-hover, .no-js .jdm-fab:hover{opacity:1;-moz-transform: translateX(0);-webkit-transform: translateX(0);-o-transform: translateX(0);-ms-transform: translateX(0);transform: translateX(0);}
+.jdm-fab.genericons.has-hover, .jdm-fab.fontawesome.has-hover, .jdm-fab.fab-icons.has-hover, .jdm-fab.has-hover, .no-js .jdm-fab:hover{opacity:1;-moz-transform: translateX(0);-webkit-transform: translateX(0);-o-transform: translateX(0);-ms-transform: translateX(0);transform: translateX(0);}
 
 
 #fab-admin-btns.not-ready{opacity:0;}
