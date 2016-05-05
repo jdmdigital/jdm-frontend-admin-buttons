@@ -22,6 +22,14 @@ The plugin is still in BETA, but you're welcome to take a look at how it's comin
 
 ## Changelog
 
+**1.2**
+* Add better support for different access roles
+* Add tiny font-icon suite if none already found
+
+**1.1**
+* Fix possible function conflicts
+* Version Bump
+
 **1.0**
 * Production-Ready
 * Several Bug Fixes
