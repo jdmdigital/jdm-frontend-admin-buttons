@@ -25,7 +25,8 @@ if(!function_exists('jdmfab_enqueued_assets')) {
 
 /* Disable the Admin Bar. */
 add_filter( 'show_admin_bar', '__return_false' );
-function jdm_fab_hide_admin_bar_settings() {
+if(!function_exists('jdm_fab_hide_admin_bar_settings')) {
+	function jdm_fab_hide_admin_bar_settings() {
 ?>
 	<style type="text/css">
 		.show-admin-bar {
@@ -33,6 +34,7 @@ function jdm_fab_hide_admin_bar_settings() {
 		}
 	</style>
 <?php
+	}
 }
 function yoast_disable_admin_bar() {
     add_filter( 'show_admin_bar', '__return_false' );
