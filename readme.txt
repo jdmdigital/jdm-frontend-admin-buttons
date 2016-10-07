@@ -3,8 +3,8 @@ Contributors: jdm-labs
 Donate link: http://jdmdigital.co
 Tags: administration, admin, frontend, buttons.
 Requires at least: 3.0.1
-Tested up to: 4.5.2
-Stable tag: 1.2
+Tested up to: 4.6.1
+Stable tag: 1.3
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -45,6 +45,9 @@ http://labs.jdmdigital.co/wp-content/uploads/sites/4/2015/12/jdm-fab.jpg
 
 == Upgrade Notice ==
 
+= 1.3 =
+* Several bug fixes included in v1.3
+
 = 1.1 =
 * Renamed the yoast_hide_admin_bar_settings function
 
@@ -71,6 +74,9 @@ http://labs.jdmdigital.co/wp-content/uploads/sites/4/2015/12/jdm-fab.jpg
 * This version comes with GitHub automatic updates enabled.
 
 == Changelog ==
+
+= 1.3 =
+* Add defection for page as posts listing
 
 = 1.2 =
 * Add better support for different access roles
