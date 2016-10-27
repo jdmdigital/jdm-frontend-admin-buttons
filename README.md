@@ -24,6 +24,10 @@ There's no settings page.  It does all the feature and role detection work for y
 
 ## Changelog
 
+**1.3**
+* Add detection for page as posts listing
+* Bug fixes
+
 **1.2**
 * Add better support for different access roles
 * Add tiny font-icon suite if none already found
