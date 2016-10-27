@@ -25,6 +25,7 @@ There's no settings page.  It does all the feature and role detection work for y
 ## Changelog
 
 **1.3**
+* Add detection for page as posts listing
 * Bug fixes
 
 **1.2**
