@@ -1,7 +1,7 @@
 # JDM Frontend Admin Buttons
 JDM Frontend Admin Buttons is a lightweight WordPress plugin that hides the default Admin Bar and replaces it with out of the way, contextually-aware, floating buttons for basic admin tasks.
 
-![alt tag](http://labs.jdmdigital.co/wp-content/uploads/sites/4/2015/12/frontend-admin-buttons-header.png)
+![JDM Frontend Admin Buttons](https://jdmdigital.co/wp-content/uploads/sites/4/2015/12/frontend-admin-buttons-header.png)
 
 ## Description
 The WordPress admin bar gets in the way of basic frontend management of your WordPress site&mdash;esspecially if you have a fixed main navigation.  This simple and VERY light-weight plugin offers floating buttons that are contextually-aware and fixed to one side so they're out of the way.
