@@ -3,7 +3,7 @@
  * Plugin Name: JDM Frontend Admin Buttons
  * Plugin URI: https://jdmdig.it/fab-info
  * Description: JDM Frontend Admin Buttons is a lightweight WordPress plugin that hides the default Admin Bar and replaces it with out of the way, contextually-aware, floating buttons for basic admin tasks.
- * Version: 1.3
+ * Version: 1.4
  * Author: JDM Digital
  * Author URI: https://jdmdigital.co
  * License: GPLv2 or later
@@ -76,9 +76,7 @@ if(!function_exists('jdmfab_show_admin_buttons')) {
 	
 	function jdmfab_show_admin_buttons() {
 		$bootstrapclass = true;
-		if(wp_style_is('bootstrap')) {
-			$fabclass = 'jdm-fab bs';
-		} elseif(wp_style_is('bootstrap-css')) {
+		if(wp_style_is('bootstrap-css')) {
 			$fabclass = 'jdm-fab bs';
 		} elseif(wp_style_is('bootstrap-style')) {
 			$fabclass = 'jdm-fab bs';	
