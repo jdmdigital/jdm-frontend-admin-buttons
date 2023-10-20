@@ -13,7 +13,7 @@ JDM Frontend Admin Buttons is a lightweight WordPress plugin that hides the defa
 == Description ==
 The WordPress admin bar gets in the way of basic frontend management of your WordPress site&mdash;esspecially if you have a fixed main navigation.  This simple and VERY light-weight plugin offers floating buttons that are contextually-aware and fixed to one side so they're out of the way.
 
-Learn more on the plugin site: http://jdmdig.it/jdm-fab and view the project on GitHub: https://github.com/jdmdigital/jdm-frontend-admin-buttons
+Learn more on the plugin site: https://jdmdig.it/fab-info and view the project on GitHub: https://github.com/jdmdigital/jdm-frontend-admin-buttons
 
 = Vision = 
 A few goals we had in making this plugin:
