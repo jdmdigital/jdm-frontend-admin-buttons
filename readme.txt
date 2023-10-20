@@ -1,10 +1,10 @@
 === JDM Frontend Admin Buttons ===
 Contributors: jdm-labs
-Donate link: http://jdmdigital.co
+Donate link: https://jdmdigital.co
 Tags: administration, admin, frontend, buttons.
 Requires at least: 4.0
-Tested up to: 4.6.2
-Stable tag: 1.3
+Tested up to: 6.3.5
+Stable tag: 1.4
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -27,7 +27,7 @@ A few goals we had in making this plugin:
 == Installation ==
 This plugin is not, yet, avaliable on the WordPress repo.  To install it, you'll need to use the [GitHub Updater](https://github.com/afragen/github-updater) plugin for automatic updates.  Of course, you could just install/upgrade it manually using FTP, but that's boring.
 
-1. Install the plugin, and the updater - [tutorial here for using GitHub Updater](http://labs.jdmdigital.co/plugins/github-updates/)
+1. Install the plugin, and the updater - [tutorial here for using GitHub Updater](https://jdmdigital.co/labs/demo/github-updates/)
 1. Activate the plugin
 1. That's it!  Seriously. 
 
@@ -45,11 +45,16 @@ http://labs.jdmdigital.co/wp-content/uploads/sites/4/2015/12/jdm-fab.jpg
 
 == Upgrade Notice ==
 
-= 1.3 =
-* Several bug fixes included in v1.3
+= 1.4 =
+* Removes jQuery dependancy
 
 
 == Changelog ==
+= 1.4 =
+* Remove jQuery dependancy
+* Update Bootstrap detection because BS v5 has no icons included in it
+* Bug fixes 
+* Tested up to v6.3.x
 
 = 1.3 =
 * Add detection for page as posts listing

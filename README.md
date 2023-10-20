@@ -16,13 +16,17 @@ A few goals we had in making this plugin:
 ## Installation
 This plugin is not, yet, avaliable on the WordPress repo.  To install it, you'll need to use the [GitHub Updater](https://github.com/afragen/github-updater) plugin for automatic updates.  Of course, you could just install/upgrade it manually using FTP, but that's boring.
 
-1. Install the plugin, and the updater - [tutorial here for using GitHub Updater](http://labs.jdmdigital.co/plugins/github-updates/)
+1. Install the plugin, and the updater - [tutorial here for using GitHub Updater](https://jdmdigital.co/labs/demo/github-updates/)
 2. Activate the plugin
 3. That's it!  Seriously. 
 
 There's no settings page.  It does all the feature and role detection work for you.
 
 ## Changelog
+**1.4**
+* Remove jQuery dependancy
+* Update Bootstrap detection because BS v5 has no icons included in it
+* Bug fixes
 
 **1.3**
 * Add detection for page as posts listing
